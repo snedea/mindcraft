@@ -41,7 +41,7 @@ Andy: !orchestrateTask("Build house", "Create a 10x10 wooden house with door and
 Andy: "House complete! 4 bots used, all phases passed."
 ```
 
-## New MCP Commands
+## New Orchestration Commands
 
 ### `!orchestrateTask(taskName, taskDescription, parallel)`
 
@@ -472,7 +472,7 @@ Edit the prompt files to change bot behavior:
    - Tracks completion via `.done` files
    - Handles parallel execution with dependency resolution
 
-2. **MCP Commands** (`src/agent/commands/mcp.js`)
+2. **Orchestration Commands** (`src/agent/commands/mcp.js`)
    - `!orchestrateTask` - Full workflow
    - `!spawnBot` - Single bot
    - `!botStatus` - Check progress
