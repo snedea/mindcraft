@@ -41,9 +41,18 @@ Do not connect this bot to public servers with coding enabled. This project allo
 
 If you encounter issues, check the [FAQ](https://github.com/mindcraft-bots/mindcraft/blob/main/FAQ.md) or find support on [discord](https://discord.gg/mp73p35dzC). We are currently not very responsive to github issues. To run tasks please refer to [Minecollab Instructions](minecollab.md#installation)
 
-## Bot Orchestration 🤖
+## Bot Orchestration 🤖 ✨ NEW!
 
-Andy can spawn helper bots to work on tasks autonomously! Command multiple bots at once to gather resources, build structures, or complete survival milestones.
+**Revolutionary autonomous multi-agent system that uses your Claude Pro subscription - NO API KEYS REQUIRED!**
+
+Andy can spawn helper bots to work on tasks autonomously! Command multiple bots at once to gather resources, build structures, or complete survival milestones. **All powered by Claude Code CLI integration - zero additional costs for Claude Pro users.**
+
+### 💰 Cost-Free Operation
+
+- **No API Keys Needed**: Uses `claude` CLI instead of `.env` file with API keys
+- **Zero Cost**: Rides your existing Claude Pro subscription ($20/month you're already paying)
+- **Unlimited Bots**: Spawn up to 90 concurrent bots without additional charges
+- **Revolutionary Approach**: First Minecraft bot system to use local CLI instead of cloud API
 
 ### Quick Examples
 
@@ -58,12 +67,14 @@ Andy can spawn helper bots to work on tasks autonomously! Command multiple bots 
 
 ### Key Features
 
-- **Survival Milestones**: Auto-spawn coordinated gatherer + crafter bots for tech progression
-- **Multi-bot Orchestration**: Scout→Architect→Builder→Tester pattern for complex builds
-- **Shared Resource Map**: Bots log discovered resources, Andy finds nearest locations intelligently
-- **Bot Pool System**: Pre-whitelisted 90 bot names (20 gatherers, 20 crafters, 20 builders, 10 scouts, 10 architects, 10 testers)
-- **Bot Management**: Kill bots, check status, monitor resource pool
-- **Toggle On/Off**: Enable/disable orchestration in `settings.js`
+- **🆓 Claude Code CLI Integration**: Uses your Claude Pro subscription instead of expensive API calls
+- **🤖 Autonomous Multi-Agent System**: Bots coordinate and work independently without human intervention
+- **📊 Survival Milestones**: Auto-spawn coordinated gatherer + crafter bots for tech progression
+- **🏗️ Multi-bot Orchestration**: Scout→Architect→Builder→Tester pattern for complex builds
+- **🗺️ Shared Resource Map**: Bots log discovered resources, Andy finds nearest locations intelligently
+- **🎯 Bot Pool System**: Pre-whitelisted 90 bot names (20 gatherers, 20 crafters, 20 builders, 10 scouts, 10 architects, 10 testers)
+- **⚙️ Bot Management**: Kill bots, check status, monitor resource pool
+- **🔌 Toggle On/Off**: Enable/disable orchestration in `settings.js`
 
 ### Documentation
 
