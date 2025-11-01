@@ -7,13 +7,14 @@
 <p align="center">Crafting minds for Minecraft with LLMs and <a href="https://prismarinejs.github.io/mineflayer/#/">Mineflayer!</a></p>
 
 <p align="center">
-  <a href="https://github.com/mindcraft-bots/mindcraft/blob/main/FAQ.md">FAQ</a> | 
-  <a href="https://discord.gg/mp73p35dzC">Discord Support</a> | 
-  <a href="https://www.youtube.com/watch?v=gRotoL8P8D8">Video Tutorial</a> | 
-  <a href="https://kolbynottingham.com/mindcraft/">Blog Post</a> | 
-  <a href="https://github.com/users/kolbytn/projects/1">Contributor TODO</a> | 
-  <a href="https://mindcraft-minecollab.github.io/index.html">Paper Website</a> | 
-  <a href="https://github.com/mindcraft-bots/mindcraft/blob/main/minecollab.md">MineCollab</a>
+  <a href="https://github.com/mindcraft-bots/mindcraft/blob/main/FAQ.md">FAQ</a> |
+  <a href="https://discord.gg/mp73p35dzC">Discord Support</a> |
+  <a href="https://www.youtube.com/watch?v=gRotoL8P8D8">Video Tutorial</a> |
+  <a href="https://kolbynottingham.com/mindcraft/">Blog Post</a> |
+  <a href="https://github.com/users/kolbytn/projects/1">Contributor TODO</a> |
+  <a href="https://mindcraft-minecollab.github.io/index.html">Paper Website</a> |
+  <a href="https://github.com/mindcraft-bots/mindcraft/blob/main/minecollab.md">MineCollab</a> |
+  <a href="https://github.com/snedea/mindcraft/blob/orchestration-system/README.md#bot-orchestration---new">🤖 Bot Orchestration (NEW!)</a>
 </p>
 
 > [!Caution]
@@ -43,16 +44,16 @@ If you encounter issues, check the [FAQ](https://github.com/mindcraft-bots/mindc
 
 ## Bot Orchestration 🤖 ✨ NEW!
 
-**Revolutionary autonomous multi-agent system that uses your Claude Pro subscription - NO API KEYS REQUIRED!**
+**Autonomous multi-agent system powered by Claude Code CLI integration.**
 
-Andy can spawn helper bots to work on tasks autonomously! Command multiple bots at once to gather resources, build structures, or complete survival milestones. **All powered by Claude Code CLI integration - zero additional costs for Claude Pro users.**
+Andy can spawn helper bots to work on tasks autonomously! Command multiple bots at once to gather resources, build structures, or complete survival milestones.
 
-### 💰 Cost-Free Operation
+### 🔑 Claude Code CLI Integration
 
-- **No API Keys Needed**: Uses `claude` CLI instead of `.env` file with API keys
-- **Zero Cost**: Rides your existing Claude Pro subscription ($20/month you're already paying)
-- **Unlimited Bots**: Spawn up to 90 concurrent bots without additional charges
-- **Revolutionary Approach**: First Minecraft bot system to use local CLI instead of cloud API
+- **Uses Claude Pro Subscription**: Leverages `claude` CLI instead of per-token API billing
+- **No API Keys in `.env`**: Uses your authenticated Claude Code CLI session
+- **Subscription-Based Pricing**: Fixed monthly cost instead of pay-per-token metering
+- **Novel Approach**: First Minecraft bot system to use local CLI instead of cloud API
 
 ### Quick Examples
 
@@ -67,7 +68,7 @@ Andy can spawn helper bots to work on tasks autonomously! Command multiple bots 
 
 ### Key Features
 
-- **🆓 Claude Code CLI Integration**: Uses your Claude Pro subscription instead of expensive API calls
+- **🔑 Claude Code CLI Integration**: Uses `claude` CLI with subscription-based pricing instead of per-token API billing
 - **🤖 Autonomous Multi-Agent System**: Bots coordinate and work independently without human intervention
 - **📊 Survival Milestones**: Auto-spawn coordinated gatherer + crafter bots for tech progression
 - **🏗️ Multi-bot Orchestration**: Scout→Architect→Builder→Tester pattern for complex builds
