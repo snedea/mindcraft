@@ -12,7 +12,7 @@
         "torch_placing": true,
         "elbow_room": false,
         "idle_staring": false,
-        "cheat": false
+        "cheat": true
     },
 
     "conversation_examples": [
