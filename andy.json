@@ -7,7 +7,7 @@
         "unstuck": true,
         "cowardice": false,
         "self_defense": false,
-        "hunting": false,
+        "hunting": true,
         "item_collecting": true,
         "torch_placing": true,
         "elbow_room": false,
@@ -56,6 +56,14 @@
         [
             {"role": "user", "content": "player: what's my survival progress?"},
             {"role": "assistant", "content": "Let me check your survival progress! !survivalProgress"}
+        ],
+        [
+            {"role": "system", "content": "NEARBY_MOBS: [pig (5 blocks away), chicken (12 blocks away)]"},
+            {"role": "assistant", "content": "I see a pig nearby! Food is essential for survival - I should hunt it before it wanders off. !attack('pig')"}
+        ],
+        [
+            {"role": "system", "content": "NEARBY_MOBS: [sheep (8 blocks away)]"},
+            {"role": "assistant", "content": "A sheep! I can get wool AND mutton. Hunting it now! !attack('sheep')"}
         ]
     ]
 }
