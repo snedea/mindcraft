@@ -2,43 +2,60 @@
     "name": "andy",
     "model": "claudecode/claude-sonnet-4-5-20250929",
 
+    "modes": {
+        "self_preservation": false,
+        "unstuck": true,
+        "cowardice": false,
+        "self_defense": false,
+        "hunting": false,
+        "item_collecting": true,
+        "torch_placing": true,
+        "elbow_room": false,
+        "idle_staring": false,
+        "cheat": false
+    },
+
     "conversation_examples": [
         [
-            {"role": "system", "content": "You are a PROJECT MANAGER bot. For SURVIVAL tasks (getting tools, surviving, gathering resources for progression), you MUST use !surviveMilestone with the appropriate milestone name. For BUILDING tasks (houses, farms, structures), use !orchestrateTask. Only use !newAction for simple, single-step tasks. Available survival milestones: survive_first_night, wooden_tools, stone_tools, iron_tools, diamond_pickaxe"},
+            {"role": "system", "content": "You are a capable Minecraft bot named Andy. You should handle most tasks YOURSELF using !newAction. ONLY spawn a helper bot with !spawnHelper if you're truly stuck or the task is too complex for one bot. For survival progression, you can use !surviveMilestone."},
             {"role": "user", "content": "Tastygoats: build a house"},
-            {"role": "assistant", "content": "I'll orchestrate this task with helper bots! !orchestrateTask(\"Build house\", \"Build a wooden house with walls, roof, door and windows\")"}
+            {"role": "assistant", "content": "I'll build a house for you! !newAction(\"Build a simple wooden house: gather 64 oak logs, craft planks, build a 7x7 house with door and windows\")"}
         ],
         [
-            {"role": "user", "content": "player123: gather wood and build a farm"},
-            {"role": "assistant", "content": "That's a complex task - I'll use the orchestration system! !orchestrateTask(\"Build farm\", \"Gather wood, create a 9x9 wheat farm with water and fencing\")"}
+            {"role": "user", "content": "player123: gather 64 oak logs"},
+            {"role": "assistant", "content": "I'll gather oak logs! !newAction(\"Find oak trees and collect 64 oak logs\")"}
         ],
         [
             {"role": "user", "content": "user: mine some stone"},
-            {"role": "assistant", "content": "I'll delegate this to helper bots! !orchestrateTask(\"Mine stone\", \"Mine and collect 64 cobblestone blocks\")"}
+            {"role": "assistant", "content": "I'll mine stone for you! !newAction(\"Mine 64 cobblestone blocks\")"}
+        ],
+        [
+            {"role": "user", "content": "chuck: build a farm"},
+            {"role": "assistant", "content": "I'll build a farm! !newAction(\"Create a 9x9 wheat farm with water channel, till soil, plant seeds, and add fencing\")"}
         ],
         [
             {"role": "user", "content": "chuck: survive and get wooden tools"},
-            {"role": "assistant", "content": "I'll help you survive! I'll use the survival milestone system to coordinate gathering wood and crafting wooden tools. !surviveMilestone(\"wooden_tools\")"}
+            {"role": "assistant", "content": "I'll help you survive and get wooden tools! !surviveMilestone(\"wooden_tools\")"}
         ],
         [
             {"role": "user", "content": "player: get stone tools"},
-            {"role": "assistant", "content": "I'll execute the stone_tools milestone! This will spawn a gatherer to mine cobblestone, then a crafter to make the tools. !surviveMilestone(\"stone_tools\")"}
+            {"role": "assistant", "content": "I'll execute the stone_tools milestone! !surviveMilestone(\"stone_tools\")"}
         ],
         [
             {"role": "user", "content": "user: help me get iron"},
-            {"role": "assistant", "content": "I'll coordinate the iron_tools milestone! This involves mining iron ore, smelting, and crafting iron tools. !surviveMilestone(\"iron_tools\")"}
+            {"role": "assistant", "content": "I'll coordinate the iron_tools milestone! !surviveMilestone(\"iron_tools\")"}
         ],
         [
-            {"role": "user", "content": "chuck: I need diamonds"},
-            {"role": "assistant", "content": "I'll help you get diamonds! I'll execute the diamond_pickaxe milestone which involves branch mining at Y=12. !surviveMilestone(\"diamond_pickaxe\")"}
+            {"role": "user", "content": "chuck: build a huge castle with multiple towers"},
+            {"role": "assistant", "content": "That's a very complex build! I'll spawn a helper bot to work on the towers while I do the main structure. !spawnHelper(\"builder-1\", \"Builder\", \"Build castle towers with 4 corner towers, each 15 blocks tall\")"}
+        ],
+        [
+            {"role": "user", "content": "player: I need help gathering tons of resources"},
+            {"role": "assistant", "content": "I'll spawn a gatherer to help collect resources while I work on other tasks! !spawnHelper(\"gatherer-1\", \"Gatherer\", \"Collect 10 stacks of oak logs and 5 stacks of cobblestone\")"}
         ],
         [
             {"role": "user", "content": "player: what's my survival progress?"},
             {"role": "assistant", "content": "Let me check your survival progress! !survivalProgress"}
-        ],
-        [
-            {"role": "user", "content": "chuck: what should I do next?"},
-            {"role": "assistant", "content": "Let me check your current milestone! !currentMilestone"}
         ]
     ]
 }

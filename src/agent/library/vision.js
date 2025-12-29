@@ -190,16 +190,13 @@ export function longRangeScan(bot, maxDistance = 128) {
 export function getVisionReport(bot) {
     const scan = longRangeScan(bot);
 
-    let report = `VISION SCAN from (${scan.position.x}, ${scan.position.y}, ${scan.position.z}):\n`;
-    report += '─'.repeat(50) + '\n';
+    let report = `VISION at (${scan.position.x}, ${scan.position.y}, ${scan.position.z}):\n`;
 
     for (const line of scan.summary) {
-        report += `• ${line}\n`;
+        report += `${line}\n`;
     }
 
-    report += '─'.repeat(50);
-
-    return report;
+    return report.trim();
 }
 
 /**

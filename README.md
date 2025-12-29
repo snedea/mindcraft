@@ -14,6 +14,7 @@
   <a href="https://github.com/users/kolbytn/projects/1">Contributor TODO</a> |
   <a href="https://mindcraft-minecollab.github.io/index.html">Paper Website</a> |
   <a href="https://github.com/mindcraft-bots/mindcraft/blob/main/minecollab.md">MineCollab</a> |
+  <a href="https://github.com/snedea/mindcraft/blob/orchestration-system/README.md#web-management-interface-">🌐 Web Interface</a> |
   <a href="https://github.com/snedea/mindcraft/blob/orchestration-system/README.md#bot-orchestration---new">🤖 Bot Orchestration (NEW!)</a>
 </p>
 
@@ -41,6 +42,37 @@ Do not connect this bot to public servers with coding enabled. This project allo
 6. Run `node main.js` from the installed directory
 
 If you encounter issues, check the [FAQ](https://github.com/mindcraft-bots/mindcraft/blob/main/FAQ.md) or find support on [discord](https://discord.gg/mp73p35dzC). We are currently not very responsive to github issues. To run tasks please refer to [Minecollab Instructions](minecollab.md#installation)
+
+## Web Management Interface 🌐
+
+Access Andy's web interface at **https://andy.minepad.cc** (password-protected)
+
+The web UI provides:
+- **Real-time Bot Status**: View Andy's current task and activity
+- **Inventory Viewer**: See all items in Andy's inventory
+- **Chat History**: Read conversation history with players
+- **Bot Controls**: Send commands, restart, or stop Andy
+- **24/7 Access**: Manage Andy from any device, anywhere
+
+### Running Andy 24/7
+
+Andy runs persistently in a `screen` session, allowing you to disconnect from SSH while he continues playing:
+
+```bash
+# View Andy's live output
+screen -r andy
+
+# Detach (Andy keeps running): Ctrl+A then D
+
+# Check if Andy is running
+screen -list
+
+# Restart Andy
+screen -S andy -X quit
+screen -dmS andy bash -c 'npm start 2>&1 | tee andy.log'
+```
+
+For complete management commands, see [ANDY_SCREEN_GUIDE.md](ANDY_SCREEN_GUIDE.md)
 
 ## Bot Orchestration 🤖 ✨ NEW!
 

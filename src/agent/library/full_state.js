@@ -1,4 +1,4 @@
-import { 
+import {
     getPosition,
     getBiomeName,
     getNearbyPlayerNames,
@@ -7,7 +7,17 @@ import {
     getBlockAtPosition,
     getFirstBlockAboveHead
 } from "./world.js";
+import { longRangeScan } from "./vision.js";
 import convoManager from '../conversation.js';
+
+// Cache for vision data (expensive to compute every tick)
+let visionCache = {
+    lastUpdate: 0,
+    lastPosition: null,
+    data: null
+};
+const VISION_CACHE_TTL = 10000; // Update vision every 10 seconds
+const VISION_MOVE_THRESHOLD = 20; // Or when moved 20+ blocks
 
 export function getFullState(agent) {
     const bot = agent.bot;
@@ -40,6 +50,9 @@ export function getFullState(agent) {
     const leggings = bot.inventory.slots[7];
     const boots = bot.inventory.slots[8];
 
+    // Get cached vision data (HUD-like environmental awareness)
+    const visionHUD = getCachedVision(bot, position);
+
     const state = {
         name: agent.name,
         gameplay: {
@@ -63,6 +76,8 @@ export function getFullState(agent) {
             head,
             firstBlockAboveHead: getFirstBlockAboveHead(bot, null, 32)
         },
+        // HUD: Long-range vision (what you can see in all directions)
+        vision: visionHUD,
         inventory: {
             counts: getInventoryCounts(bot),
             stacksUsed: bot.inventory.items().length,
@@ -86,4 +101,75 @@ export function getFullState(agent) {
     };
 
     return state;
+}
+
+/**
+ * Get cached vision data, updating only when needed
+ */
+function getCachedVision(bot, currentPos) {
+    const now = Date.now();
+
+    // Check if we need to update the cache
+    let needsUpdate = false;
+
+    if (!visionCache.data) {
+        needsUpdate = true;
+    } else if (now - visionCache.lastUpdate > VISION_CACHE_TTL) {
+        needsUpdate = true;
+    } else if (visionCache.lastPosition) {
+        // Check if moved significantly
+        const dx = currentPos.x - visionCache.lastPosition.x;
+        const dz = currentPos.z - visionCache.lastPosition.z;
+        const distance = Math.sqrt(dx * dx + dz * dz);
+        if (distance > VISION_MOVE_THRESHOLD) {
+            needsUpdate = true;
+        }
+    }
+
+    if (needsUpdate) {
+        try {
+            const scan = longRangeScan(bot, 64); // Scan up to 64 blocks for HUD
+            visionCache = {
+                lastUpdate: now,
+                lastPosition: { x: currentPos.x, z: currentPos.z },
+                data: {
+                    summary: scan.summary,
+                    directions: formatDirectionsForHUD(scan.directions)
+                }
+            };
+        } catch (e) {
+            // If vision scan fails, return empty
+            visionCache.data = {
+                summary: ['Vision scan unavailable'],
+                directions: {}
+            };
+        }
+    }
+
+    return visionCache.data;
+}
+
+/**
+ * Format direction data for compact HUD display
+ */
+function formatDirectionsForHUD(directions) {
+    const hud = {};
+
+    for (const [dir, data] of Object.entries(directions)) {
+        const features = [];
+
+        if (data.features.trees) features.push(`trees:${data.features.trees.count}`);
+        if (data.features.water) features.push('water');
+        if (data.features.lava) features.push('LAVA!');
+        if (data.features.ores) features.push(`ores:${data.features.ores.count}`);
+        if (data.features.villages) features.push('village');
+        if (data.features.caves) features.push('cave');
+        if (data.features.crops) features.push('farm');
+
+        if (features.length > 0) {
+            hud[dir] = features.join(', ');
+        }
+    }
+
+    return hud;
 }
