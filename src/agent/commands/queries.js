@@ -1,5 +1,6 @@
 import * as world from '../library/world.js';
 import * as mc from '../../utils/mcdata.js';
+import { getVisionReport, findResourceDirection } from '../library/vision.js';
 import { getCommandDocs } from './index.js';
 import convoManager from '../conversation.js';
 import { checkLevelBlueprint, checkBlueprint } from '../tasks/construction_tasks.js';
@@ -342,6 +343,37 @@ export const queryList = [
         description: 'Lists all available commands and their descriptions.',
         perform: async function (agent) {
             return getCommandDocs(agent);
+        }
+    },
+    {
+        name: '!vision',
+        description: 'Long-range environmental scan. See what resources, biomes, and features are visible in all directions (like human vision across a landscape).',
+        perform: function (agent) {
+            let bot = agent.bot;
+            try {
+                return pad(getVisionReport(bot));
+            } catch (error) {
+                return pad(`Vision scan error: ${error.message}`);
+            }
+        }
+    },
+    {
+        name: '!findResource',
+        description: 'Scan for a specific resource type and get the best direction to find it.',
+        params: {
+            'resourceType': {
+                type: 'string',
+                description: 'Resource to find: trees, water, lava, ores, villages, caves, crops, structures, sand, snow, mushrooms'
+            }
+        },
+        perform: function (agent, resourceType) {
+            let bot = agent.bot;
+            try {
+                const result = findResourceDirection(bot, resourceType.toLowerCase());
+                return pad(result.suggestion);
+            } catch (error) {
+                return pad(`Resource scan error: ${error.message}`);
+            }
         }
     },
 ];
