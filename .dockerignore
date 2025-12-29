@@ -1,0 +1,54 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Node modules (will be installed in container)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment and secrets
+.env
+.env.local
+*.env
+
+# Docker files
+docker-compose.yaml
+docker-compose.yml
+Dockerfile*
+.dockerignore
+
+# Documentation
+*.md
+docs/
+PROGRESS_*.md
+*_GUIDE.md
+*_INSTRUCTIONS.md
+*_PLAN.md
+*_SETUP.md
+*_FIX.md
+
+# Logs and runtime data
+logs/
+*.log
+bots/*/
+*.backup-*
+
+# Tailscale state (managed by volume)
+tailscale-state/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+test_*.js
+*.test.js

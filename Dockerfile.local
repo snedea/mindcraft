@@ -1,0 +1,60 @@
+# Dockerfile for running Mindcraft with local code (not cloning from GitHub)
+FROM node:20
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    python3 \
+    python3-pip \
+    python3-boto3 \
+    python3-tqdm \
+    wget \
+    apt-transport-https \
+    gnupg \
+    lsb-release \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Java 21 (required for Minecraft server if needed)
+RUN wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | apt-key add - && \
+    echo "deb https://packages.adoptium.net/artifactory/deb $(lsb_release -cs) main" > /etc/apt/sources.list.d/adoptium.list && \
+    apt-get update && \
+    apt-get install -y temurin-21-jdk && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install AWS CLI (if you use it for backups)
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    rm -rf aws awscliv2.zip
+
+# Set working directory
+WORKDIR /mindcraft
+
+# Copy package files first for better caching
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+# Create directories for data persistence
+RUN mkdir -p /mindcraft/bots /mindcraft/logs
+
+# Install Claude Code CLI
+RUN npm install -g @anthropic-ai/claude-code
+
+# Create non-root user to run the app (required for Claude Code)
+RUN useradd -m -s /bin/bash mindcraft && \
+    chown -R mindcraft:mindcraft /mindcraft
+
+# Switch to non-root user
+USER mindcraft
+
+# Expose the mindserver UI port
+EXPOSE 8080
+
+# Run the bot
+CMD ["npm", "start"]

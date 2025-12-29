@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Mindcraft bot service
+  mindcraft:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    container_name: mindcraft-andy
+    restart: unless-stopped
+    # Use host network to easily connect to local Minecraft server
+    network_mode: "host"
+    env_file:
+      - .env
+    volumes:
+      # Persist bot memory and logs
+      - ./bots:/mindcraft/bots
+      - ./logs:/mindcraft/logs
+      # Mount profile so you can edit it without rebuilding
+      - ./andy.json:/mindcraft/andy.json:ro
+      # Mount settings so you can adjust without rebuilding
+      - ./settings.js:/mindcraft/settings.js:ro
+      # Mount API keys
+      - ./keys.json:/mindcraft/keys.json:ro
+      # Mount Claude Code subscription auth (read-write for session updates)
+      - ~/.claude:/home/mindcraft/.claude
+      - ~/.claude.json:/home/mindcraft/.claude.json
+    environment:
+      - MINECRAFT_PORT=${MINECRAFT_PORT:-25565}
+      - MINDSERVER_PORT=${MINDSERVER_PORT:-8080}
+      - NODE_ENV=production
+    # Keep container running even if bot crashes temporarily
+    command: npm start
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
