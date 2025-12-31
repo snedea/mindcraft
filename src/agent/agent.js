@@ -118,7 +118,13 @@ export class Agent {
             "Set the difficulty to",
             "Teleported ",
             "Set the weather to",
-            "Gamerule "
+            "Gamerule ",
+            // RCON backup system messages
+            "Automatic saving is now",
+            "Saved the game",
+            "Saving the game",
+            "Turning off world save",
+            "Turning on world save"
         ];
         
         const respondFunc = async (username, message) => {
