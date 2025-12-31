@@ -110,7 +110,13 @@ export class ClaudeCode {
                     }
 
                     console.log('[ClaudeCode] Response length:', result.length);
-                    resolve(result || 'No response from Claude Code.');
+
+                    // Treat "(no content)", tabs, or empty as no response
+                    if (!result || result === '(no content)' || result === '\t') {
+                        resolve('');
+                    } else {
+                        resolve(result);
+                    }
                 } else {
                     console.error(`[ClaudeCode] Error - Exit code: ${code}`);
                     if (stderr) console.error(`[ClaudeCode] Stderr: ${stderr}`);
