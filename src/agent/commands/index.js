@@ -1,12 +1,10 @@
 import { getBlockId, getItemId } from "../../utils/mcdata.js";
 import { actionsList } from './actions.js';
 import { queryList } from './queries.js';
-import { mcpCommandList } from './mcp.js';
-import { orchestrationCommands } from './orchestration.js';
 
 let suppressNoDomainWarning = true;
 
-const commandList = queryList.concat(actionsList).concat(mcpCommandList).concat(orchestrationCommands);
+const commandList = queryList.concat(actionsList);
 const commandMap = {};
 for (let command of commandList) {
     commandMap[command.name] = command;
