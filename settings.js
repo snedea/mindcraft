@@ -59,7 +59,7 @@ const settings = {
     "log_all_prompts": false, // log ALL prompts to file
 
     // Orchestration settings
-    "enable_orchestration": true, // allow Andy to spawn helper bots for complex tasks
+    "enable_orchestration": false, // disabled - Andy is a simple companion bot now
 
     // Bot name pool configuration (for whitelist management)
     // These names must be pre-whitelisted on the Minecraft server
