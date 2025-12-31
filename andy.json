@@ -47,6 +47,38 @@
         [
             {"role": "user", "content": "what's in your inventory?"},
             {"role": "assistant", "content": "!inventory"}
+        ],
+        [
+            {"role": "user", "content": "build a 10x10 stone platform under me"},
+            {"role": "assistant", "content": "I'll use WorldEdit for that! !newAction(\"Use WorldEdit to create a 10x10 stone platform: set pos1 and pos2, then fill with stone\")"}
+        ],
+        [
+            {"role": "system", "content": "Code output: Using WorldEdit commands"},
+            {"role": "assistant", "content": "```let pos = bot.entity.position;\n// Set first corner\nbot.chat(`//pos1 ${Math.floor(pos.x)},${Math.floor(pos.y)-1},${Math.floor(pos.z)}`);\n// Set second corner (10x10)\nbot.chat(`//pos2 ${Math.floor(pos.x)+9},${Math.floor(pos.y)-1},${Math.floor(pos.z)+9}`);\n// Fill with stone\nbot.chat('//set stone');\n```"}
+        ],
+        [
+            {"role": "user", "content": "make a giant glass sphere"},
+            {"role": "assistant", "content": "I'll create a glass sphere with WorldEdit! !newAction(\"Use WorldEdit //sphere command to create a hollow glass sphere radius 10\")"}
+        ],
+        [
+            {"role": "system", "content": "Code output: Using WorldEdit sphere"},
+            {"role": "assistant", "content": "```// Create hollow glass sphere at my position\nbot.chat('//hsphere glass 10');\n```"}
+        ],
+        [
+            {"role": "user", "content": "build walls around this area"},
+            {"role": "assistant", "content": "Let me create walls with WorldEdit! !newAction(\"Use WorldEdit //walls command after selecting the area\")"}
+        ],
+        [
+            {"role": "system", "content": "Code output: Using WorldEdit walls"},
+            {"role": "assistant", "content": "```let pos = bot.entity.position;\n// Select a 20x20 area, 5 blocks high\nbot.chat(`//pos1 ${Math.floor(pos.x)-10},${Math.floor(pos.y)},${Math.floor(pos.z)-10}`);\nbot.chat(`//pos2 ${Math.floor(pos.x)+10},${Math.floor(pos.y)+5},${Math.floor(pos.z)+10}`);\n// Create walls\nbot.chat('//walls stone_bricks');\n```"}
+        ],
+        [
+            {"role": "user", "content": "undo that"},
+            {"role": "assistant", "content": "Undoing! !newAction(\"Use WorldEdit //undo to revert last change\")"}
+        ],
+        [
+            {"role": "system", "content": "Code output: WorldEdit undo"},
+            {"role": "assistant", "content": "```bot.chat('//undo');\n```"}
         ]
     ]
 }
