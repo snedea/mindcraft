@@ -260,6 +260,15 @@ By default, the program will use the profiles specified in `settings.js`. You ca
 
 Some of the node modules that we depend on have bugs in them. To add a patch, change your local node module file and run `npx patch-package [package-name]`
 
+## Recent Changes (2025-12-31)
+
+- **Simplified Andy Config**: Removed complex orchestration examples, Andy is now a straightforward companion bot
+- **Faster Responses**: Switched from Opus 4.5 to Sonnet for quicker response times (no more "brain disconnected" timeouts)
+- **Fixed Embedding Errors**: No longer spams "Error with embedding model" on startup - uses word-overlap silently
+- **Persistent Memory**: Enabled `load_memory: true` so Andy remembers things across restarts
+- **Bot Name Fix**: Changed bot naming from hyphens to underscores (gatherer_1 vs gatherer-1) for Minecraft username compatibility
+- **Bedrock Support**: Fixed Floodgate prefix from `.` to `_` for Bedrock player compatibility
+
 ## Citation:
 
 ```

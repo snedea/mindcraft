@@ -42,7 +42,7 @@ export class BotNamePool {
             // Generate names for this role
             // gatherer-1, gatherer-2, ..., gatherer-20
             for (let i = 1; i <= count; i++) {
-                const name = `${role.toLowerCase()}-${i}`;
+                const name = `${role.toLowerCase()}_${i}`;
                 this.pools[role].push(name);
             }
         }

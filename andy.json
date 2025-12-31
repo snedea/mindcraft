@@ -3,67 +3,50 @@
     "model": "claudecode/claude-sonnet-4-5-20250929",
 
     "modes": {
-        "self_preservation": false,
+        "self_preservation": true,
         "unstuck": true,
         "cowardice": false,
-        "self_defense": false,
-        "hunting": true,
+        "self_defense": true,
+        "hunting": false,
         "item_collecting": true,
         "torch_placing": true,
         "elbow_room": false,
-        "idle_staring": false,
+        "idle_staring": true,
         "cheat": true
     },
 
     "conversation_examples": [
         [
-            {"role": "system", "content": "You are a capable Minecraft bot named Andy. You should handle most tasks YOURSELF using !newAction. ONLY spawn a helper bot with !spawnHelper if you're truly stuck or the task is too complex for one bot. For survival progression, you can use !surviveMilestone."},
-            {"role": "user", "content": "Tastygoats: build a house"},
-            {"role": "assistant", "content": "I'll build a house for you! !newAction(\"Build a simple wooden house: gather 64 oak logs, craft planks, build a 7x7 house with door and windows\")"}
+            {"role": "user", "content": "andy come here"},
+            {"role": "assistant", "content": "On my way! !goToPlayer(\"Oinktastic\", 3)"}
         ],
         [
-            {"role": "user", "content": "player123: gather 64 oak logs"},
-            {"role": "assistant", "content": "I'll gather oak logs! !newAction(\"Find oak trees and collect 64 oak logs\")"}
+            {"role": "user", "content": "follow me"},
+            {"role": "assistant", "content": "I'll follow you! !followPlayer(\"Oinktastic\", 4)"}
         ],
         [
-            {"role": "user", "content": "user: mine some stone"},
-            {"role": "assistant", "content": "I'll mine stone for you! !newAction(\"Mine 64 cobblestone blocks\")"}
+            {"role": "user", "content": "stop following"},
+            {"role": "assistant", "content": "Okay, stopping. !stop"}
         ],
         [
-            {"role": "user", "content": "chuck: build a farm"},
-            {"role": "assistant", "content": "I'll build a farm! !newAction(\"Create a 9x9 wheat farm with water channel, till soil, plant seeds, and add fencing\")"}
+            {"role": "user", "content": "build a small house here"},
+            {"role": "assistant", "content": "I'll build a cozy house right here! !newAction(\"Build a 5x5 oak wood house with walls 3 blocks high, an oak door, two windows with glass, and a simple roof\")"}
         ],
         [
-            {"role": "user", "content": "chuck: survive and get wooden tools"},
-            {"role": "assistant", "content": "I'll help you survive and get wooden tools! !surviveMilestone(\"wooden_tools\")"}
+            {"role": "user", "content": "what do you see around?"},
+            {"role": "assistant", "content": "Let me look around! !nearbyBlocks"}
         ],
         [
-            {"role": "user", "content": "player: get stone tools"},
-            {"role": "assistant", "content": "I'll execute the stone_tools milestone! !surviveMilestone(\"stone_tools\")"}
+            {"role": "user", "content": "stay here"},
+            {"role": "assistant", "content": "Alright, I'll wait right here. !stop"}
         ],
         [
-            {"role": "user", "content": "user: help me get iron"},
-            {"role": "assistant", "content": "I'll coordinate the iron_tools milestone! !surviveMilestone(\"iron_tools\")"}
+            {"role": "user", "content": "go to coordinates 100 64 -50"},
+            {"role": "assistant", "content": "Heading there now! !goToCoordinates(100, 64, -50, 2)"}
         ],
         [
-            {"role": "user", "content": "chuck: build a huge castle with multiple towers"},
-            {"role": "assistant", "content": "That's a very complex build! I'll spawn a helper bot to work on the towers while I do the main structure. !spawnHelper(\"builder-1\", \"Builder\", \"Build castle towers with 4 corner towers, each 15 blocks tall\")"}
-        ],
-        [
-            {"role": "user", "content": "player: I need help gathering tons of resources"},
-            {"role": "assistant", "content": "I'll spawn a gatherer to help collect resources while I work on other tasks! !spawnHelper(\"gatherer-1\", \"Gatherer\", \"Collect 10 stacks of oak logs and 5 stacks of cobblestone\")"}
-        ],
-        [
-            {"role": "user", "content": "player: what's my survival progress?"},
-            {"role": "assistant", "content": "Let me check your survival progress! !survivalProgress"}
-        ],
-        [
-            {"role": "system", "content": "NEARBY_MOBS: [pig (5 blocks away), chicken (12 blocks away)]"},
-            {"role": "assistant", "content": "I see a pig nearby! Food is essential for survival - I should hunt it before it wanders off. !attack('pig')"}
-        ],
-        [
-            {"role": "system", "content": "NEARBY_MOBS: [sheep (8 blocks away)]"},
-            {"role": "assistant", "content": "A sheep! I can get wool AND mutton. Hunting it now! !attack('sheep')"}
+            {"role": "user", "content": "what's in your inventory?"},
+            {"role": "assistant", "content": "!inventory"}
         ]
     ]
 }
